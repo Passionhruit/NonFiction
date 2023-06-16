@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>무제 문서</title>
+    <script src="script/jquery-1.12.3.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="script/script.js" defer></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      display: block;
+      padding: 5px;
+      width: 300px;
+      outline: none;
+      border: 1px solid #ccc;
+    }
+    #check {
+      display: inline;
+    }
+    span {
+      display: block;
+    }
+  </style>
+
+  <body>
+    <form>
+      <input type="text" id="id_1" placeholder="사용하실아이디를입력해주세요" />
+      <!--자바스크립트랑 required랑 같이 못씀-->
+      <span class="text_id1"></span><br />
+      <input
+        type="password"
+        id="pw_1"
+        placeholder="사용하실비밀번호를입력해주세요"
+      />
+      <span class="text_pw1"></span><br />
+      <input
+        type="password"
+        id="pw2"
+        placeholder="사용하실비밀번호를입력해주세요"
+      />
+      <span class="text_pw2"></span><br />
+      <input type="text" id="name" placeholder="이름을 입력해주세요" />
+      <span class="text_name"></span><br />
+      <input type="checkbox" id="check" /><label for="check"
+        >[필수]약관에 동의합니다</label
+      >
+      <input type="submit" value="회원가입하기 (만 14세 이상)" />
+    </form>
+    <script>
+      //input태그 포커스 이벤트
+      $(":text,:password").focus(function () {
+        $(this).css("border", "1px solid gray");
+      });
+      $(":text,:password").blur(function () {
+        $(this).css("border", "1px solid #ccc");
+      });
+
+      $(":text,:password").blur(function () {
+        if ($("#pw1").val() == $("#pw2").val()) {
+          //입력된 비밀번호가 같으면 true 다르면 false
+          $(".text_pw2").text("");
+        } else {
+          $(".text_pw2").text("입력값이 일치하지 않습니다.");
+        }
+      });
+    </script>
+  </body>
+</html>
